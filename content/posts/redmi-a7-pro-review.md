@@ -1,8 +1,9 @@
 ---
-title: "مراجعة Redmi A7 Pro — هل يستحق فلوسك؟"
-category: "هاتف"
+title: مراجعة Redmi A7 Pro — هل يستحق فلوسك؟
+category: هاتف
 rating: 7.5
-description: "بطارية خرافية وسعر منافس — شفنا كل حاجة فيه بالتفصيل"
+image: /static/images/chatgpt-image-5-مايو-2026،-12_35_56-ص.png
+description: بطارية خرافية وسعر منافس — شفنا كل حاجة فيه بالتفصيل
 date: 2026-05-05T10:00:00.000Z
 published: true
 ---
