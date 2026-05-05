@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>المجتمع — شاومى عربى</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF6B00;--orange-glow:rgba(255,107,0,0.15);--dark:#0A0A0F;--dark2:#111118;--dark3:#18181F;--dark4:#1E1E28;--text:#F0EEF8;--text-muted:#8E8CA0;--text-subtle:#5A5870;--border:rgba(255,107,0,0.15);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cairo',sans-serif;background:var(--dark);color:var(--text);direction:rtl;}
+nav{position:fixed;top:0;width:100%;z-index:900;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,15,0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.logo{font-size:1.3rem;font-weight:900;color:#fff;text-decoration:none;}
+.logo span{color:var(--orange);}
+.nav-links{display:flex;gap:8px;}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:0.88rem;font-weight:600;padding:8px 14px;border-radius:8px;transition:all 0.2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--orange);background:var(--orange-glow);}
+.page-header{padding:120px 5% 60px;background:var(--dark2);border-bottom:1px solid var(--border);text-align:center;}
+.page-header h1{font-size:2.5rem;font-weight:900;margin-bottom:10px;}
+.page-header p{color:var(--text-muted);max-width:500px;margin:0 auto 30px;}
+.stats-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin-top:30px;}
+.stat{text-align:center;}
+.stat-num{font-size:2rem;font-weight:900;color:var(--orange);display:block;}
+.stat-label{font-size:0.82rem;color:var(--text-muted);}
+
+.community-wrap{max-width:800px;margin:0 auto;padding:50px 5%;}
+
+/* Post form */
+.post-form{background:var(--dark3);border:1px solid var(--border);border-radius:18px;padding:24px;margin-bottom:32px;}
+.post-form h3{font-size:1rem;font-weight:800;margin-bottom:16px;}
+.post-form textarea{width:100%;background:var(--dark4);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;font-family:'Cairo',sans-serif;font-size:0.95rem;resize:none;height:100px;outline:none;transition:border-color 0.3s;direction:rtl;}
+.post-form textarea:focus{border-color:rgba(255,107,0,0.5);}
+.form-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;}
+.topic-select{background:var(--dark4);border:1px solid var(--border);color:var(--text-muted);padding:8px 14px;border-radius:8px;font-family:'Cairo',sans-serif;font-size:0.85rem;cursor:pointer;outline:none;}
+.post-btn{background:var(--orange);color:#fff;border:none;padding:10px 24px;border-radius:50px;font-family:'Cairo',sans-serif;font-size:0.9rem;font-weight:800;cursor:pointer;transition:all 0.3s;}
+.post-btn:hover{background:#FF8C35;transform:translateY(-2px);}
+
+/* Posts */
+.posts-filter{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+.filter-btn{background:var(--dark3);border:1px solid var(--border);color:var(--text-muted);padding:7px 18px;border-radius:50px;font-family:'Cairo',sans-serif;font-size:0.83rem;font-weight:600;cursor:pointer;transition:all 0.3s;}
+.filter-btn.active{background:var(--orange-glow);border-color:var(--orange);color:var(--orange);}
+
+.post{background:var(--dark3);border:1px solid var(--border);border-radius:16px;padding:20px 22px;margin-bottom:16px;transition:border-color 0.3s;}
+.post:hover{border-color:rgba(255,107,0,0.3);}
+.post-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+.avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--orange),#ff9d00);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff;flex-shrink:0;}
+.post-author{font-size:0.9rem;font-weight:700;}
+.post-time{font-size:0.78rem;color:var(--text-subtle);}
+.post-topic{display:inline-block;background:var(--orange-glow);border:1px solid rgba(255,107,0,0.2);color:var(--orange);font-size:0.72rem;padding:3px 10px;border-radius:50px;margin-right:8px;}
+.post-text{font-size:0.92rem;color:var(--text-muted);line-height:1.8;margin-bottom:14px;}
+.post-actions{display:flex;gap:16px;}
+.action-btn{background:none;border:none;color:var(--text-subtle);font-family:'Cairo',sans-serif;font-size:0.82rem;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color 0.2s;padding:0;}
+.action-btn:hover{color:var(--orange);}
+.action-btn.liked{color:var(--orange);}
+
+.ad-slot{width:100%;border-radius:12px;border:1px dashed rgba(255,107,0,0.25);background:var(--dark3);display:flex;align-items:center;justify-content:center;height:90px;margin:24px 0;position:relative;}
+.ad-slot::before{content:'إعلان';position:absolute;top:8px;right:12px;font-size:0.7rem;color:var(--text-subtle);}
+footer{background:var(--dark);border-top:1px solid var(--border);padding:36px 5%;display:flex;align-items:center;justify-content:space-between;}
+.footer-logo{font-size:1.2rem;font-weight:900;}
+.footer-logo span{color:var(--orange);}
+.footer-copy{font-size:0.8rem;color:var(--text-subtle);}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">شاومى <span>عربى</span></a>
+  <div class="nav-links">
+    <a href="index.html">الرئيسية</a>
+    <a href="reviews.html">مراجعات</a>
+    <a href="compare.html">مقارنات</a>
+    <a href="news.html">أخبار</a>
+    <a href="community.html" class="active">المجتمع</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1>👥 مجتمع شاومى عربى</h1>
+  <p>اسأل، شارك، وتعرف على ناس بتستخدم نفس جهازك</p>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">+8K</span><div class="stat-label">عضو نشيط</div></div>
+    <div class="stat"><span class="stat-num">يومى</span><div class="stat-label">محتوى جديد</div></div>
+    <div class="stat"><span class="stat-num">مجانى</span><div class="stat-label">للجميع</div></div>
+  </div>
+</div>
+
+<div class="community-wrap">
+  <div class="post-form">
+    <h3>✍️ شارك سؤالك أو تجربتك</h3>
+    <textarea id="postText" placeholder="اكتب هنا — سؤال، تجربة، نصيحة..."></textarea>
+    <div class="form-footer">
+      <select class="topic-select" id="topicSelect">
+        <option>سؤال</option>
+        <option>تجربة</option>
+        <option>نصيحة</option>
+        <option>مشكلة</option>
+        <option>عرض</option>
+      </select>
+      <button class="post-btn" onclick="addPost()">نشر 🚀</button>
+    </div>
+  </div>
+
+  <div class="posts-filter">
+    <button class="filter-btn active">الكل</button>
+    <button class="filter-btn">أسئلة</button>
+    <button class="filter-btn">تجارب</button>
+    <button class="filter-btn">نصائح</button>
+  </div>
+
+  <div class="ad-slot"><span style="font-size:0.8rem;color:var(--text-subtle);">إعلان</span></div>
+
+  <div id="posts">
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar">أ</div>
+        <div><div class="post-author">أحمد سامى <span class="post-topic">تجربة</span></div><div class="post-time">منذ 5 دقائق</div></div>
+      </div>
+      <div class="post-text">عملت التحديث الجديد على Redmi Note 13 وفرق الباترى واضح جداً 🔋 من 4 ساعات وصل لـ 7 ساعات شاشة فعلية!</div>
+      <div class="post-actions">
+        <button class="action-btn" onclick="like(this)">❤️ <span>24</span></button>
+        <button class="action-btn">💬 8 تعليقات</button>
+        <button class="action-btn">↗️ مشاركة</button>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#6b00ff,#a020f0);">س</div>
+        <div><div class="post-author">سارة خليل <span class="post-topic">سؤال</span></div><div class="post-time">منذ 18 دقيقة</div></div>
+      </div>
+      <div class="post-text">سؤال: هل Xiaomi 14T أحسن من Poco F6 Pro للتصوير؟ أنا بحب التصوير الليلى والبورتريه كتير.</div>
+      <div class="post-actions">
+        <button class="action-btn" onclick="like(this)">❤️ <span>11</span></button>
+        <button class="action-btn">💬 15 تعليقاً</button>
+        <button class="action-btn">↗️ مشاركة</button>
+      </div>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#006bff,#00a0f0);">م</div>
+        <div><div class="post-author">محمد العمرى <span class="post-topic">نصيحة</span></div><div class="post-time">منذ 1 ساعة</div></div>
+      </div>
+      <div class="post-text">نصيحة: الـ Developer Options فيها إعدادات بتسرع الجهاز بشكل ملحوظ — غير Animation Scale من 1x لـ 0.5x وهتحس الفرق فوراً 🚀</div>
+      <div class="post-actions">
+        <button class="action-btn" onclick="like(this)">❤️ <span>56</span></button>
+        <button class="action-btn">💬 21 تعليقاً</button>
+        <button class="action-btn">↗️ مشاركة</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">شاومى <span>عربى</span></div>
+  <div class="footer-copy">© 2026 جميع الحقوق محفوظة</div>
+</footer>
+
+<script>
+function like(btn) {
+  btn.classList.toggle('liked');
+  const span = btn.querySelector('span');
+  span.textContent = btn.classList.contains('liked') ? parseInt(span.textContent)+1 : parseInt(span.textContent)-1;
+}
+function addPost() {
+  const text = document.getElementById('postText').value.trim();
+  const topic = document.getElementById('topicSelect').value;
+  if (!text) return;
+  const post = document.createElement('div');
+  post.className = 'post';
+  post.innerHTML = `
+    <div class="post-header">
+      <div class="avatar">أ</div>
+      <div><div class="post-author">أنت <span class="post-topic">${topic}</span></div><div class="post-time">الآن</div></div>
+    </div>
+    <div class="post-text">${text}</div>
+    <div class="post-actions">
+      <button class="action-btn" onclick="like(this)">❤️ <span>0</span></button>
+      <button class="action-btn">💬 0 تعليقات</button>
+    </div>`;
+  document.getElementById('posts').prepend(post);
+  document.getElementById('postText').value = '';
+}
+</script>
+</body>
+</html>
